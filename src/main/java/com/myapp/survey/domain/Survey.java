@@ -1,6 +1,8 @@
 package main.java.com.myapp.survey.domain;
 
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Survey {
     private Long id;
@@ -10,6 +12,8 @@ public class Survey {
     private ZonedDateTime createdAt;
     private ZonedDateTime updatedAt;
 
+    private List<Question> questions;
+
     public Survey(Long id, String title, String description, boolean isActive, ZonedDateTime createdAt, ZonedDateTime updatedAt) {
         this.id = id;
         this.title = title;
@@ -17,6 +21,7 @@ public class Survey {
         this.isActive = isActive;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.questions = new ArrayList<>();
     }
 
     public Long getId() {
@@ -43,6 +48,10 @@ public class Survey {
         return updatedAt;
     }
 
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -65,5 +74,15 @@ public class Survey {
 
     public void setUpdatedAt(ZonedDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public void addQuestion(Question question) {
+        this.questions.add(question);
+    }
+
+    public void removeQuestion(Question question) {
+        if (this.questions != null) {
+            this.questions.remove(question);
+        }
     }
 }
